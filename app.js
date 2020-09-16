@@ -5,6 +5,9 @@ const passport = require('passport');
 const cookieSession = require('cookie-session')
 require('./passport-setup');
 
+const port = process.env.PORT || 3000
+
+
 
 
 app.use(cookieSession({
@@ -77,7 +80,6 @@ app.get('/logout', (req, res) => {
 
 
 
-
-app.listen(3000, ()=>{
-    console.log("server is listening")
-})
+app.listen(port, () => {
+    console.log ('server is up on port' + port)
+});
