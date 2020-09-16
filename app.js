@@ -53,7 +53,7 @@ app.get('/good', isLoggedIn, (req, res) =>{
 
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/good');
@@ -62,7 +62,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
 
 app.get('/logout', (req, res) => {
     req.session = null;
-    req.logout();
+    req.logOut(),
     res.redirect('/');
 })
 
